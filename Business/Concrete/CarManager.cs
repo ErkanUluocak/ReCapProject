@@ -18,9 +18,13 @@ namespace Business.Concrete
         {
             return _carDal.GetAll();
         }
-        public List<Car> GetById(int carId)
+        public Car GetById(int carId)
         {
             return _carDal.GetById(carId);
+        }
+        public void Delete(Car car)
+        {
+           _carDal.Delete(car);
         }
     }
 }

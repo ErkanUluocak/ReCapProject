@@ -16,10 +16,16 @@ namespace ConsoleUI
                 Console.WriteLine($"{car.CarId} {car.BrandId} {car.ColorId} {car.ModelYear} {car.DailyPrice} {car.Description}");
             }
 
-            foreach (var item in carManager.GetById(1))
+            Console.WriteLine(carManager.GetById(1).CarId);
+            Car car1 = carManager.GetById(1);
+            carManager.Delete(car1);
+            Console.WriteLine();
+            foreach (var car in carManager.GetAll())
             {
-                Console.WriteLine(item.CarId);
+                Console.WriteLine($"{car.CarId} {car.BrandId} {car.ColorId} {car.ModelYear} {car.DailyPrice} {car.Description}");
             }
+            Console.WriteLine(carManager);
+
         }
     }
 }

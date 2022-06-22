@@ -32,10 +32,10 @@ namespace DataAccess.Concrete.InMemory
         public List<Car> GetAll()
         {
             return _cars;
-        } 
-        public List<Car> GetById(int carId)
+        }
+        public Car GetById(int carId)
         {
-            return _cars.Where(c => c.CarId == carId).ToList();
+            return _cars.SingleOrDefault(c => c.CarId == carId);
         }
         public void Update(Car car)
         {
