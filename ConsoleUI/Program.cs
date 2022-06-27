@@ -8,17 +8,6 @@ using System.Collections.Generic;
 namespace ConsoleUI
 {
 
-    class ProductDto
-    {
-        public int CarId { get; set; }
-        public string BrandName { get; set; }
-        public string ColorName { get; set; }
-        public short ModelYear { get; set; }
-        public decimal DailyPrice { get; set; }
-        public string Description { get; set; }
-
-    }
-
     internal class Program
     {
         static void Main(string[] args)
@@ -118,6 +107,19 @@ namespace ConsoleUI
             //    Console.WriteLine("Arabanın günlük fiyatı 0'dan büyük olmalıdır.");
             //}
 
+            Console.WriteLine("--- GetCarsByBrandId ---");
+
+            foreach (var car in carManager.GetCarsByBrandId(18))
+            {
+                Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
+            }
+            Console.WriteLine();
+            Console.WriteLine("--- GetCarsByColorId ---");
+
+            foreach (var car in carManager.GetCarsByColorId(6))
+            {
+                Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
+            }
 
 
         }
