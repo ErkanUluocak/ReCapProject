@@ -72,16 +72,16 @@ namespace ConsoleUI
 
             Brand brand = new Brand { BrandName = "Y" };
 
-            try
-            {
-                brandManager.Add(brand);
-                Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+            //try
+            //{
+            //    brandManager.Add(brand);
+            //    Console.WriteLine("Marka başarılı bir şekilde eklendi.");
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
 
 
             //int sonuc = brandManager.Add2(brand);
@@ -115,28 +115,32 @@ namespace ConsoleUI
 
             //Araba günlük fiyatı 0'dan büyük olmalıdır testi.
 
-            //Car car = new Car
-            //{
-            //    BrandId = 5,
-            //    ColorId = 6,
-            //    ModelYear = 2022,
-            //    DailyPrice = 100,
-            //    Description = "yeni deneme"
-            //};
+            Car car = new Car
+            {
+                BrandId = 5,
+                ColorId = 6,
+                ModelYear = 2022,
+                DailyPrice = 0,
+                Description = "yeni deneme"
+            };
 
 
-            //try
-            //{
-            //    carManager.Add(car);
-            //    Console.WriteLine("Araç başarılı bir şekilde eklendi.");
+            try
+            {
+                carManager.Add(car);
+                Console.WriteLine("Araç başarılı bir şekilde eklendi.");
 
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            //}
+
+
+
+
 
             //if (carManager.CheckIfPriceHigherThanZero(car.DailyPrice)) 
             //{
