@@ -17,7 +17,28 @@ namespace Business.Concrete
 
         public void Add(Brand brand)
         {
-            _brandDal.Add(brand);
+            if (CheckIfNameIsLongEnough(brand.BrandName))
+            {
+                _brandDal.Add(brand);
+            }
+            else
+            {
+                throw new Exception("Araba ismi 2 karakterden uzun olmalıdır.");
+            }
+        }
+
+
+        public int Add2(Brand brand)
+        {
+            if (CheckIfNameIsLongEnough(brand.BrandName))
+            {
+                _brandDal.Add(brand);
+                return 1;
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public bool CheckIfNameIsLongEnough(string brandName)

@@ -70,7 +70,35 @@ namespace ConsoleUI
 
             //Araba ismi minimum 2 karakter testi
 
-            //Brand brand = new Brand { BrandName = "N" };  
+            Brand brand = new Brand { BrandName = "Yy" };
+
+            //try
+            //{
+            //    brandManager.Add(brand);
+            //    Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+
+
+            int sonuc = brandManager.Add2(brand);
+
+            if (sonuc >= 1)
+            {
+                  Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+            }
+            else
+            {
+                Console.WriteLine("Araba ismi 2 karakterden uzun olmalıdır........  yeni");
+            }
+
+
+
+
+
             //if (brandManager.CheckIfNameIsLongEnough(brand.BrandName))
             //{
             //    brandManager.Add(brand);
@@ -92,10 +120,23 @@ namespace ConsoleUI
             //    BrandId = 5,
             //    ColorId = 6,
             //    ModelYear = 2022,
-            //    DailyPrice = 1000,
-            //    Description = "Geniş aile arabası"
+            //    DailyPrice = 100,
+            //    Description = "yeni deneme"
             //};
 
+
+            //try
+            //{
+            //    carManager.Add(car);
+            //    Console.WriteLine("Araç başarılı bir şekilde eklendi.");
+
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+
+            //}
 
             //if (carManager.CheckIfPriceHigherThanZero(car.DailyPrice)) 
             //{
@@ -107,19 +148,22 @@ namespace ConsoleUI
             //    Console.WriteLine("Arabanın günlük fiyatı 0'dan büyük olmalıdır.");
             //}
 
-            Console.WriteLine("--- GetCarsByBrandId ---");
 
-            foreach (var car in carManager.GetCarsByBrandId(18))
-            {
-                Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
-            }
-            Console.WriteLine();
-            Console.WriteLine("--- GetCarsByColorId ---");
 
-            foreach (var car in carManager.GetCarsByColorId(6))
-            {
-                Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
-            }
+
+            //Console.WriteLine("--- GetCarsByBrandId ---");
+
+            //foreach (var car in carManager.GetCarsByBrandId(18))
+            //{
+            //    Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine("--- GetCarsByColorId ---");
+
+            //foreach (var car in carManager.GetCarsByColorId(6))
+            //{
+            //    Console.WriteLine($"Brand : {car.BrandId} - Color : {car.ColorId} - Model Year : {car.ModelYear} - Description : {car.Description}");
+            //}
 
 
         }
