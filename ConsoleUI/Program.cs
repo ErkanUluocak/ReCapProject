@@ -1,66 +1,133 @@
 ﻿using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
+using System.Collections.Generic;
 
 namespace ConsoleUI
 {
+
+    class ProductDto
+    {
+        public int CarId { get; set; }
+        public string BrandName { get; set; }
+        public string ColorName { get; set; }
+        public short ModelYear { get; set; }
+        public decimal DailyPrice { get; set; }
+        public string Description { get; set; }
+
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
 
-            List(carManager); //Listeyi yazdırma
-            Console.WriteLine();
-
-            Console.WriteLine($"Seçilen Id:{carManager.GetById(1).CarId}"); //GetById Test
-            Console.WriteLine();
-
-            Car car1 = carManager.GetById(1);
-            carManager.Delete(car1);   //Delete Test
-            Console.WriteLine("Listeden araba silindi...");
-            List(carManager);
-            Console.WriteLine();
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
 
 
-            Car car = new Car
-            {
-                CarId = 7,
-                ColorId = 2,
-                BrandId = 1,
-                Description = "Sahibinden temiz",
-                DailyPrice = 180000,
-                ModelYear = 2021
-            };
+            //List(carManager); //Listeyi yazdırma
+            //Console.WriteLine();
 
-            carManager.Add(car); //Add Test
-            Console.WriteLine("Listeye araba eklendi...");
-            List(carManager);
-            Console.WriteLine();
+            //Console.WriteLine($"Seçilen Id:{carManager.GetById(1).CarId}"); //GetById Test
+            //Console.WriteLine();
+
+            //Car car1 = carManager.GetById(1);
+            //carManager.Delete(car1);   //Delete Test
+            //Console.WriteLine("Listeden araba silindi...");
+            //List(carManager);
+            //Console.WriteLine();
 
 
+            //Car car = new Car
+            //{
+            //    CarId = 7,
+            //    ColorId = 2,
+            //    BrandId = 1,
+            //    Description = "Sahibinden temiz",
+            //    DailyPrice = 180000,
+            //    ModelYear = 2021
+            //};
 
-            Car car2 = carManager.GetById(2);
+            //carManager.Add(car); //Add Test
+            //Console.WriteLine("Listeye araba eklendi...");
+            //List(carManager);
+            //Console.WriteLine();
 
-            car2.BrandId = 1;
-            car2.ColorId = 4;
-            car2.Description = "Yeni güncelleme";
-            car2.ModelYear = 2022;
-            car2.DailyPrice = 500000;
 
-            Console.WriteLine();
 
-            carManager.Update(car2);  //Update Test
-            Console.WriteLine("Araba güncellendi...");
-            List(carManager);
+            //Car car2 = carManager.GetById(2);
+
+            //car2.BrandId = 1;
+            //car2.ColorId = 4;
+            //car2.Description = "Yeni güncelleme";
+            //car2.ModelYear = 2022;
+            //car2.DailyPrice = 500000;
+
+            //Console.WriteLine();
+
+            //carManager.Update(car2);  //Update Test
+            //Console.WriteLine("Araba güncellendi...");
+            //List(carManager);
+
+
+            //List(carManager);
+
+
+
+
+
+            //Araba ismi minimum 2 karakter testi
+
+            //Brand brand = new Brand { BrandName = "N" };  
+            //if (brandManager.CheckIfNameIsLongEnough(brand.BrandName))
+            //{
+            //    brandManager.Add(brand);
+            //    Console.WriteLine("Marka başarıyla kayıt edilmiştir");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Araba ismi 2 karakterden uzun olmalıdır.");
+            //}
+
+
+
+
+
+            //Araba günlük fiyatı 0'dan büyük olmalıdır testi.
+
+            //Car car = new Car
+            //{
+            //    BrandId = 5,
+            //    ColorId = 6,
+            //    ModelYear = 2022,
+            //    DailyPrice = 1000,
+            //    Description = "Geniş aile arabası"
+            //};
+
+
+            //if (carManager.CheckIfPriceHigherThanZero(car.DailyPrice)) 
+            //{
+            //    carManager.Add(car);
+            //    Console.WriteLine("Araba başarılı şekilde sisteme kayıt edilmiştir.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Arabanın günlük fiyatı 0'dan büyük olmalıdır.");
+            //}
+
+
+
         }
 
         private static void List(CarManager carManager)
         {
             foreach (var car in carManager.GetAll())  //GetAll Test
             {
-                Console.WriteLine($"CarId: {car.CarId} BrandId: {car.BrandId} ColorId: {car.ColorId} Model Year: {car.ModelYear} Dail Price: {car.DailyPrice} Description: {car.Description}");
+                //Console.WriteLine($"CarId: {car.CarId.ToString()} BrandId: {car.BrandId.ToString()} ColorId: {car.ColorId.ToString()} Model Year: {car.ModelYear.ToString()} Dail Price: {car.DailyPrice.ToString()} Description: {car.Description}");
+                Console.WriteLine(car.CarId);
             }
         }
     }
