@@ -28,18 +28,18 @@ namespace Business.Concrete
         }
 
 
-        public int Add2(Brand brand)
-        {
-            if (CheckIfNameIsLongEnough(brand.BrandName))
-            {
-                _brandDal.Add(brand);
-                return 1;
-            }
-            else
-            {
-                return -1;
-            }
-        }
+        //public int Add2(Brand brand)
+        //{
+        //    if (CheckIfNameIsLongEnough(brand.BrandName))
+        //    {
+        //        _brandDal.Add(brand);
+        //        return 1;
+        //    }
+        //    else
+        //    {
+        //        return -1;
+        //    }
+        //}
 
         public bool CheckIfNameIsLongEnough(string brandName)
         {

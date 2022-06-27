@@ -70,30 +70,30 @@ namespace ConsoleUI
 
             //Araba ismi minimum 2 karakter testi
 
-            Brand brand = new Brand { BrandName = "Yy" };
+            Brand brand = new Brand { BrandName = "Y" };
 
-            //try
-            //{
-            //    brandManager.Add(brand);
-            //    Console.WriteLine("Marka başarılı bir şekilde eklendi.");
-
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
-
-
-            int sonuc = brandManager.Add2(brand);
-
-            if (sonuc >= 1)
+            try
             {
-                  Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+                brandManager.Add(brand);
+                Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Araba ismi 2 karakterden uzun olmalıdır........  yeni");
+                Console.WriteLine(ex.Message);
             }
+
+
+            //int sonuc = brandManager.Add2(brand);
+
+            //if (sonuc >= 1)
+            //{
+            //      Console.WriteLine("Marka başarılı bir şekilde eklendi.");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Araba ismi 2 karakterden uzun olmalıdır........  yeni");
+            //}
 
 
 
