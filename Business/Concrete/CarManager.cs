@@ -22,7 +22,14 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (CheckIfPriceHigherThanZero(car.DailyPrice))
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                throw new Exception("Günlük fiyat 0'dan büyük olmalıdır");
+            }
         }
         public void Update(Car car)
         {
