@@ -23,7 +23,8 @@ namespace ConsoleUI
             //CheckIfPriceHigherThanZeroTest();
             //GetCarsByBrandIdTest();
             //GetCarsByColorIdTest();
-
+            //GetCarDetailsByBrandIdTest();
+            //GetCarDetailsByColorId();
 
 
 
@@ -51,14 +52,29 @@ namespace ConsoleUI
 
 
 
+
+
+
+
+
+        }
+
+        private static void GetCarDetailsByColorId()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            foreach (var car in carManager.GetCarDetailsByColorId(8))
+            {
+                Console.WriteLine($"{car.CarId} - Brand Name : {car.BrandName} - {car.ColorName} - {car.DailyPrice}");
+            }
+        }
+
+        private static void GetCarDetailsByBrandIdTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             foreach (var car in carManager.GetCarDetailsByBrandId(18))
             {
-                Console.WriteLine($"{car.CarId} - {car.BrandName} - {car.ColorName} - {car.DailyPrice}");
+                Console.WriteLine($"{car.CarId} - Brand Name : {car.BrandName} - {car.ColorName} - {car.DailyPrice}");
             }
-
-
-
         }
 
         private static void ColorDeleteTest()

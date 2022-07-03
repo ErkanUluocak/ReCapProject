@@ -18,6 +18,8 @@ namespace Business.Abstract
         bool CheckIfPriceHigherThanZero(decimal dailyPrice);
         List<CarDetailDto> GetCarDetails();
         List<CarDetailDto> GetCarDetailsByBrandId(int brandId);
+        List<CarDetailDto> GetCarDetailsByColorId(int colorId);
+
 
     }
 }
