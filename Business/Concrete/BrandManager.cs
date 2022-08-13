@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -15,15 +17,16 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
-            if (CheckIfNameIsLongEnough(brand.BrandName))
+            if (CheckIfNameIsLongEnough(brand.BrandName).Data == false)
             {
                 _brandDal.Add(brand);
+                return new SuccessResult(Messages.BrandAdded);
             }
             else
             {
-                throw new Exception("Araba ismi 2 karakterden uzun olmalıdır.");
+                return new ErrorResult(Messages.InsufficientCharacterError);
             }
         }
 
@@ -41,31 +44,39 @@ namespace Business.Concrete
         //    }
         //}
 
-        public bool CheckIfNameIsLongEnough(string brandName)
+        public IDataResult<bool> CheckIfNameIsLongEnough(string brandName)
         {
-            return brandName.Length >= 2;
+            if (brandName.Length >= 2)
+            {
+                return new SuccessDataResult<bool>(true);
+            }
+            else
+            {
+                return new ErrorDataResult<bool>(false);
+            }
         }
 
-        public void Delete(Brand brand)
+
+
+        public IDataResult<List<Brand>> GetAll()
+        {
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), Messages.BrandsListed);
+        }
+
+        public IDataResult<Brand> GetById(int brandId)
+        {
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == brandId));
+        }
+
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult(Messages.BrandDeleted);
         }
-
-        public List<Brand> GetAll()
-        {
-            return _brandDal.GetAll();
-        }
-
-        public Brand GetById(int brandId)
-        {
-            return _brandDal.Get(b => b.BrandId == brandId);
-        }
-
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
+            return new SuccessResult(Messages.BrandUpdated);
         }
-
-
     }
 }
