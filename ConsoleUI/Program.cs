@@ -17,9 +17,9 @@ namespace ConsoleUI
             //RentalDto testleri
 
             //GetRentalDetailsTest();
-            RentalAddTest();
+            //RentalAddTest();
             //RentalUpdateTest();
-            //RentalDeleteTest();
+            RentalDeleteTest();
 
 
 
@@ -115,7 +115,16 @@ namespace ConsoleUI
         private static void RentalDeleteTest()
         {
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            rentalManager.Delete(new Rental { Id = 44 });
+            var result = rentalManager.Delete(new Rental { Id = 44 });
+            if (result.Success)
+            {
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
         }
 
         private static void RentalUpdateTest()

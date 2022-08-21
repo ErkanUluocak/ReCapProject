@@ -19,7 +19,7 @@ namespace Business.Concrete
 
         public IResult Add(Brand brand)
         {
-            if (CheckIfNameIsLongEnough(brand.BrandName).Data == false)
+            if (CheckIfNameIsLongEnough(brand.BrandName).Data == true)
             {
                 _brandDal.Add(brand);
                 return new SuccessResult(Messages.BrandAdded);

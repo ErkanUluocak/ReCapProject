@@ -41,13 +41,20 @@ namespace Business.Concrete
         {
             try
             {
-                _rentalDal.Delete(rental);
-                return new SuccessResult(Messages.RentalDeleted);
+                Rental result = _rentalDal.Get(x => x == rental);
+                if (result != null)
+                {
+                    _rentalDal.Delete(rental);
+                    return new SuccessResult(Messages.RentalDeleted);
+                }
+                else
+                {
+                    return new ErrorResult(Messages.RentalIdNull);
+                }
             }
             catch (Exception)
             {
                 return new ErrorResult(Messages.RentalDeletedError);
-
             }
 
         }

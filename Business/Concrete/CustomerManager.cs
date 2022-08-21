@@ -29,6 +29,11 @@ namespace Business.Concrete
 
         public IResult Delete(Customer customer)
         {
+            Customer result = _customerDal.Get(x => x == customer);
+            if (result == null)
+            {
+                return new ErrorResult(Messages.CustomerIdNull);
+            }
             _customerDal.Delete(customer);
             return new SuccessResult(Messages.CustomerDeleted);
         }
